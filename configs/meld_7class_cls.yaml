@@ -1,0 +1,9 @@
+# MELD 7-class emotion with a [CLS] cross-attention sequence encoder (16 heads) and a 1024-d latent.
+data:
+  label_parser: meld
+  sequence_features: true
+model:
+  num_classes: 7
+  latent_dim: 1024
+  sequence_encoder: cls
+  num_heads: 16

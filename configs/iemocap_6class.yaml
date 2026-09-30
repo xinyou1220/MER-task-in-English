@@ -1,0 +1,11 @@
+# IEMOCAP 6-class emotion (hap, sad, neu, ang, exc, fru).
+# Audio/vision stay sequences and are summarized by attention pooling; focal prototype loss.
+data:
+  label_parser: iemocap
+  sequence_features: true
+model:
+  num_classes: 6
+  sequence_encoder: attention
+  prototype_loss: focal
+train:
+  epochs: 40

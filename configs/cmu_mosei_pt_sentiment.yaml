@@ -1,0 +1,31 @@
+# Early experiment on CMU-MOSEI .pt features (GloVe word vectors, COVAREP, Facet; max-pooled over time).
+# Sentiment in [-3, 3] is split into 7 equal-width bins. Router fusion, focal prototype loss.
+# Uses the first flow-matching formulation (no OT pairing, flow loss also trains the encoders).
+data:
+  format: mosei_pt
+  label_mode: sentiment   # or sentiment_3class (num_classes: 3) / emotion (num_classes: 6)
+  pooling: max
+  balanced_sampling: false
+  num_workers: 4
+model:
+  num_classes: 7
+  latent_dim: 256
+  use_router: true
+  prototype_temperature: 0.05
+  prototype_loss: focal
+  focal_reduction: mean
+flow:
+  noise_scale: 0.1
+  ot_pairing: false
+  detach_target: false
+train:
+  epochs: 100
+  lr_prototype: 2.0e-4
+  lr_router: 5.0e-4
+  lambda_intra: 0.1
+  lambda_prototype: 5.0
+  lambda_router_entropy: 0.1
+  lambda_ortho: 0.5
+  select_metric: macro_f1
+inference:
+  flow_alpha: 0.8

@@ -1,0 +1,8 @@
+# MELD 7-class emotion (joy, sadness, anger, fear, disgust, surprise, neutral).
+# Audio/vision stay sequences and are summarized by attention pooling.
+data:
+  label_parser: meld
+  sequence_features: true
+model:
+  num_classes: 7
+  sequence_encoder: attention

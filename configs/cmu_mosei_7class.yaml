@@ -1,0 +1,5 @@
+# CMU-MOSEI 7-class sentiment (labels 0-6), BERT text + mean-pooled audio/vision.
+data:
+  label_parser: mosei_7class
+model:
+  num_classes: 7

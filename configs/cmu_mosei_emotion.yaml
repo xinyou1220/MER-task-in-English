@@ -1,0 +1,18 @@
+# Early experiment: CMU-MOSEI utterances labelled with the MELD emotion set (7 classes), router fusion.
+# Uses the first flow-matching formulation: no OT pairing, flow loss also trains the encoders,
+# checkpoint selected by validation accuracy.
+data:
+  label_parser: mosei_emotion
+  balanced_sampling: false
+model:
+  num_classes: 7
+  use_router: true
+flow:
+  ot_pairing: false
+  detach_target: false
+train:
+  batch_size: 64
+  lambda_router_entropy: 0.1
+  select_metric: accuracy
+inference:
+  flow_alpha: 0.8

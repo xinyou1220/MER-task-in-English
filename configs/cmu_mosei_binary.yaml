@@ -1,0 +1,7 @@
+# CMU-MOSEI binary sentiment (negative / positive), BERT text + mean-pooled audio/vision.
+# Originally CMU_FLOWEMO/2acc_nature (acc2_has0_*.pkl) and 2acc_nonature (2c_*.pkl): same setup,
+# two preprocessing variants of the binary split.
+data:
+  label_parser: binary_sentiment
+model:
+  num_classes: 2
